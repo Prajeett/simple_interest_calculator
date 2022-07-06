@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Interest</title>
+  </head>
+  <body>
+    <h1>Simple Interest calculator</h1>
+    <table>
+      <tr>
+        <td><h3>Principle: </h3></td>
+        <td><input type="text" name="p" id="p1" placeholder="Enter Principle" ></td>
+      </tr>
+      <tr>
+        <td><h3>Time: </h3></td>
+        <td><input type="text" name="t" id="t1" placeholder="Enter Time in months"></td>
+      </tr>
+
+      <tr>
+        <td><h3>Rate: </h3></td>
+        <td><input type="text" name="r" id="r1" placeholder="Enter Rate"></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td><button onclick="calculateSI()">SUBMIT</button></td>
+
+      </tr>
+    <tr>     
+        <td><p>The Simple Interest is </p>  </td>
+        <td id="si">  </td>
+        
+        </tr>
+    </table>
+
+
+
+  </body>
+  <script type="text/javascript">
+    function calculateSI() {
+      var p1, t1, r1, si, ty;
+      p1 = parseFloat(document.getElementById("p1").value);
+      r1 = parseFloat(document.getElementById("r1").value);
+      t1 = parseFloat(document.getElementById("t1").value);
+      si = ((p1 * (t1) * r1)/(100*12));
+
+      document.getElementById("si").innerHTML =  si;
+
+    }
+  </script>
+</html>
