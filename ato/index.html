@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Income tax calculator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="container">
+        <h1>Income tax calculator</h1>
+        <br />
+
+        <table>
+            <main>
+                <tr>
+                    <td>
+                        <h3><b>Gross Income: </b></h3>
+                    </td>
+                    <td>
+                        <input type="text" class="gross_income" id="gross_income"
+                            placeholder="Enter your amount in $" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3><b>Tax Deduction: </b></h3>
+                    </td>
+                    <td>
+                        <input type="text" class="tax_deduction" id="tax_deduction"
+                            placeholder="Enter your amount in $" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3><b>Tax withheld: </b></h3>
+                    </td>
+                    <td>
+                        <input type="text" class="tax_withheld" id="tax_withheld"
+                            placeholder="Enter your amount in $" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><button onclick="calculate_tax()">Calculate Tax</button></td>
+                </tr>
+            </main>
+        </table>
+
+        <div id="tax"></div>
+        <div id="withheld"></div>
+        <div id="note"></div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function calculate_tax() {
+        var gross_income = 0,
+            tax_deduction = 0,
+            tax = 0,
+            withheld = 0,
+            taxable_income = 0,
+            tax_withheld = 0,
+            note = 0;
+
+        gross_income = parseFloat(document.getElementById("gross_income").value);
+
+        tax_deduction = parseFloat(
+            document.getElementById("tax_deduction").value
+        );
+
+        tax_withheld = parseFloat(document.getElementById("tax_withheld").value);
+
+        taxable_income = gross_income - tax_deduction;
+
+        if (taxable_income <= 18200) {
+            document.getElementById("tax").innerHTML =
+                "Your income is less than 18200, So you dont have to pay tax this year. You will get all the withheld amount &#128512";
+            console.log("you dont pay tax");
+            withheld = tax_withheld;
+            document.getElementById("withheld").innerHTML =
+                "Your tax return for this year is $" + withheld;
+            console.log("Tax return");
+            document.getElementById("note").innerHTML =
+                "Note: If your amount for tax return is negative then you have to pay additional amount to ATO. ";
+        } else if (taxable_income > 18200 && taxable_income <= 45000) {
+            tax = (taxable_income - 18200) * 0.19;
+            withheld = tax_withheld - tax;
+            document.getElementById("tax").innerHTML =
+                "Your tax amount for this year is: $" + tax;
+            console.log("Tax amount");
+            document.getElementById("withheld").innerHTML =
+                "Your tax return for this year is $" + withheld;
+            console.log("Tax return");
+            document.getElementById("note").innerHTML =
+                "Note: If your amount for tax return is negative then you have to pay additional amount to ATO. ";
+        } else if (taxable_income > 45000 && taxable_income <= 120000) {
+            tax = 5092 + (taxable_income - 45000) * 0.325;
+            withheld = tax_withheld - tax;
+            document.getElementById("tax").innerHTML =
+                "Your tax amount for this year is: $" + tax;
+            console.log("Tax amount");
+            document.getElementById("withheld").innerHTML =
+                "Your tax return for this year is $" + withheld;
+            console.log("Tax return");
+            document.getElementById("note").innerHTML =
+                "Note: If your amount for tax return is negative then you have to pay additional amount to ATO. ";
+        } else if (taxable_income > 120000 && taxable_income <= 180000) {
+            tax = 29467 + (taxable_income - 120000) * 0.37;
+            withheld = tax_withheld - tax;
+            document.getElementById("tax").innerHTML =
+                "Your tax amount for this year is: $" + tax;
+            console.log("Tax amount");
+            document.getElementById("withheld").innerHTML =
+                "Your tax return for this year is $" + withheld;
+            console.log("Tax return");
+            document.getElementById("note").innerHTML =
+                "Note: If your amount for tax return is negative then you have to pay additional amount to ATO. ";
+        } else if (taxable_income > 180000) {
+            tax = 51667 + (taxable_income - 180000) * 0.45;
+            withheld = tax_withheld - tax;
+            document.getElementById("tax").innerHTML =
+                "Your tax amount for this year is: $" + tax;
+            console.log("Tax amount");
+            document.getElementById("withheld").innerHTML =
+                "Your tax return for this year is $" + withheld;
+            console.log("Tax return");
+            document.getElementById("note").innerHTML =
+                "Note: If your amount for tax return is negative then you have to pay additional amount to ATO. ";
+        }
+    }
+</script>
+
+</html>
